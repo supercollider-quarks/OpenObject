@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title></title>
+<meta name="Generator" content="Cocoa HTML Writer">
+<meta name="CocoaVersion" content="949.46">
+<style type="text/css">
+p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; min-height: 12.0px}
+p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Helvetica; min-height: 17.0px}
+p.p5 {margin: 0.0px 0.0px 0.0px 57.0px; text-indent: -57.0px; font: 9.0px Monaco; min-height: 12.0px}
+p.p6 {margin: 0.0px 0.0px 0.0px 57.0px; text-indent: -57.0px; font: 12.0px Helvetica}
+p.p7 {margin: 0.0px 0.0px 0.0px 57.0px; text-indent: -57.0px; font: 12.0px Helvetica; min-height: 14.0px}
+p.p8 {margin: 0.0px 0.0px 0.0px 57.0px; text-indent: -57.0px; font: 9.0px Monaco; color: #0000bf}
+p.p9 {margin: 0.0px 0.0px 0.0px 57.0px; text-indent: -57.0px; font: 9.0px Monaco; color: #000000}
+p.p10 {margin: 0.0px 0.0px 0.0px 57.0px; text-indent: -57.0px; font: 9.0px Monaco; color: #000000; min-height: 12.0px}
+p.p11 {margin: 0.0px 0.0px 0.0px 57.0px; text-indent: -57.0px; font: 9.0px Monaco; color: #bf0000}
+p.p12 {margin: 0.0px 0.0px 0.0px 57.0px; text-indent: -57.0px; font: 9.0px Monaco}
+p.p13 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Helvetica}
+p.p14 {margin: 0.0px 0.0px 0.0px 57.0px; text-indent: -57.0px; font: 14.0px Monaco}
+p.p15 {margin: 0.0px 0.0px 0.0px 57.0px; text-indent: -57.0px; font: 14.0px Monaco; min-height: 19.0px}
+p.p16 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; color: #000000}
+p.p17 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; color: #bf0000}
+p.p18 {margin: 0.0px 0.0px 0.0px 57.0px; text-indent: -57.0px; font: 9.0px Monaco; color: #007300}
+p.p19 {margin: 0.0px 0.0px 0.0px 57.0px; text-indent: -57.0px; font: 14.0px Helvetica}
+p.p20 {margin: 0.0px 0.0px 0.0px 57.0px; text-indent: -57.0px; font: 9.0px Monaco; color: #bf0000; min-height: 12.0px}
+p.p21 {margin: 0.0px 0.0px 0.0px 57.0px; text-indent: -57.0px; font: 9.0px Monaco; color: #0000bf}
+p.p22 {margin: 0.0px 0.0px 0.0px 57.0px; text-indent: -57.0px; font: 9.0px Monaco; color: #606060}
+p.p23 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; color: #606060}
+span.s1 {font: 18.0px Helvetica}
+span.s2 {color: #0000bf}
+span.s3 {color: #0000bf}
+span.s4 {color: #000000}
+span.s5 {font: 12.0px Helvetica; color: #000000}
+span.s6 {font: 12.0px Helvetica}
+span.s7 {color: #0000bf}
+span.s8 {color: #007300}
+span.s9 {font: 9.0px Monaco}
+span.s10 {color: #606060}
+span.s11 {color: #0000bf}
+span.Apple-tab-span {white-space:pre}
+</style>
+</head>
+<body>
+<p class="p1"><span class="s1"><b>OpenObject<span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></b></span><b>talk to objects over the network</b><span class="s1"><b><span class="Apple-tab-span">	</span></b></span></p>
+<p class="p2"><br></p>
+<p class="p1"><b>Inherits from: </b><a href="../../Core/Object.html"><span class="s2"><b>Object</b></span></a></p>
+<p class="p3"><br></p>
+<p class="p1">This class allows to publish any object for remote access via network (OSC)</p>
+<p class="p2"><br></p>
+<p class="p1"><b>See also:</b> OSC, <a href="SC://NetAddr"><span class="s3">NetAddr</span></a></p>
+<p class="p4"><br></p>
+<p class="p5"><br></p>
+<p class="p6"><b><span class="Apple-tab-span">	</span>*start(addr)</b></p>
+<p class="p7"><b><span class="Apple-tab-span">	</span></b></p>
+<p class="p6"><b><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></b>Start listening to <b>addr</b> (if nil, it listens to all addresses)</p>
+<p class="p7"><br></p>
+<p class="p8"><span class="s4"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></span>OpenObject<span class="s4">.start;</span></p>
+<p class="p5"><br></p>
+<p class="p6"><b><span class="Apple-tab-span">	</span>*end</b></p>
+<p class="p7"><b><span class="Apple-tab-span">	</span></b></p>
+<p class="p6"><b><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></b>Stop listening.</p>
+<p class="p7"><br></p>
+<p class="p8"><span class="s4"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></span>OpenObject<span class="s4">.end;</span></p>
+<p class="p5"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></p>
+<p class="p6"><b><span class="Apple-tab-span">	</span>*put(name, object)</b></p>
+<p class="p7"><b><span class="Apple-tab-span">	</span></b></p>
+<p class="p6"><b><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></b>Add an object for remote access under a <b>name</b></p>
+<p class="p7"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></p>
+<p class="p9"><span class="s5"><span class="Apple-tab-span">	</span></span><span class="s6"><span class="Apple-tab-span">	</span></span>a = [1, 2, 3];</p>
+<p class="p9"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s7">OpenObject</span>.add(<span class="s8">\foo</span>, a);</p>
+<p class="p10"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></p>
+<p class="p11"><span class="s4"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></span>// alternative:</p>
+<p class="p9"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>a.publish(<span class="s8">\foo</span>);</p>
+<p class="p5"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></p>
+<p class="p5"><span class="Apple-tab-span">	</span></p>
+<p class="p6"><span class="s9"><span class="Apple-tab-span">	</span>*</span><b>remove(object)</b></p>
+<p class="p7"><b><span class="Apple-tab-span">	</span></b></p>
+<p class="p6"><b><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></b>Remove an object</p>
+<p class="p7"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></p>
+<p class="p12"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><span class="s7">OpenObject</span>.remove(a);</p>
+<p class="p5"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></p>
+<p class="p11"><span class="s4"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></span>// alternative:</p>
+<p class="p9"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>a.unpublish;</p>
+<p class="p5"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></p>
+<p class="p5"><br></p>
+<p class="p5"><span class="Apple-tab-span">	</span></p>
+<p class="p5"><br></p>
+<p class="p13"><b>OSC API</b></p>
+<p class="p5"><br></p>
+<p class="p6">Once an object has been published under a <b>name</b>, methods can be called via OSC messages.</p>
+<p class="p7"><br></p>
+<p class="p6"><b>selector</b>: the message name</p>
+<p class="p6"><b>oo</b> calls arguments in sequence</p>
+<p class="p6"><b>ook</b> calls keyword arguments, in pairs of key and value.</p>
+<p class="p6">Array arguments are enclosed in <b>bracket symbols</b> (see example below).</p>
+<p class="p5"><br></p>
+<p class="p14">"/oo" name selector arg1 arg2 ...</p>
+<p class="p14">"/ook" name selector argname1 arg1 argname2 arg2 ...</p>
+<p class="p15"><br></p>
+<p class="p5"><br></p>
+<p class="p10"><br></p>
+<p class="p11">// example</p>
+<p class="p5"><br></p>
+<p class="p8">OpenObject<span class="s4">.start;</span></p>
+<p class="p11"><span class="s4">n = </span><span class="s7">NetAddr</span><span class="s4">(</span><span class="s10">"127.0.0.1"</span><span class="s4">, </span><span class="s7">NetAddr</span><span class="s4">.langPort); </span>// loopback IP for this test</p>
+<p class="p10"><br></p>
+<p class="p10"><br></p>
+<p class="p9">a = [1, 2, 3, 3, 4];</p>
+<p class="p9">a.publish(<span class="s8">\paris</span>);</p>
+<p class="p10"><br></p>
+<p class="p9">n.sendMsg(<span class="s10">"/oo"</span>, <span class="s8">\paris</span>, <span class="s8">\put</span>, 2, 1974);</p>
+<p class="p9">a.postln;</p>
+<p class="p9">n.sendMsg(<span class="s10">"/oo"</span>, <span class="s8">\paris</span>, <span class="s8">\put</span>, 2, <span class="s8">'['</span>, 1974, 1975, 1976, <span class="s8">']'</span>);</p>
+<p class="p12">a.postln;</p>
+<p class="p9">n.sendMsg(<span class="s10">"/oo"</span>, <span class="s8">\paris</span>, <span class="s8">\put</span>, <span class="s8">'['</span>, 2, 3, <span class="s8">']'</span>, 500);</p>
+<p class="p12">a.postln;</p>
+<p class="p5"><br></p>
+<p class="p5"><br></p>
+<p class="p11">// sound example</p>
+<p class="p10"><br></p>
+<p class="p16"><span class="s7">Ndef</span>(<span class="s8">\y</span>, { <span class="s7">|freq=440, numharm = 200|</span> <span class="s7">Blip</span>.ar(freq * [1, 1.2], numharm) * 0.3 } );</p>
+<p class="p16"><span class="s7">Ndef</span>(<span class="s8">\y</span>).publish(<span class="s8">\brussels</span>);</p>
+<p class="p17">// play and stop</p>
+<p class="p9">n.sendMsg(<span class="s10">"/oo"</span>, <span class="s8">\brussels</span>, <span class="s8">\play</span>);</p>
+<p class="p9">n.sendMsg(<span class="s10">"/oo"</span>, <span class="s8">\brussels</span>, <span class="s8">\stop</span>);</p>
+<p class="p11">// using keyword args (/ook)</p>
+<p class="p18"><span class="s4">n.sendMsg(</span><span class="s10">"/ook"</span><span class="s4">, </span>\brussels<span class="s4">, </span>\play<span class="s4">, </span>\fadeTime<span class="s4">, 3);</span></p>
+<p class="p11">// setting args</p>
+<p class="p9">n.sendMsg(<span class="s10">"/oo"</span>, <span class="s8">\brussels</span>, <span class="s8">\set</span>, <span class="s8">\freq</span>, 210, <span class="s8">\numharm</span>, 90);</p>
+<p class="p12">n.sendMsg(<span class="s10">"/oo"</span>, <span class="s8">\brussels</span>, <span class="s8">\stop</span>);</p>
+<p class="p10"><br></p>
+<p class="p5"><br></p>
+<p class="p11">// talk to the current environment</p>
+<p class="p9">currentEnvironment.publish(<span class="s8">\envir</span>);</p>
+<p class="p12">n.sendMsg(<span class="s10">"/oo"</span>, <span class="s8">\envir</span>, <span class="s8">\put</span>, <span class="s8">\x</span>, 210);</p>
+<p class="p12">currentEnvironment.postcs;</p>
+<p class="p12">currentEnvironment.unpublish;</p>
+<p class="p5"><br></p>
+<p class="p19"><b>Remote controlling proxies<span class="Apple-converted-space"> </span></b></p>
+<p class="p7"><br></p>
+<p class="p6">see also: <a href="SC://JITLib"><span class="s11">JITLib</span></a></p>
+<p class="p7"><br></p>
+<p class="p6"><span class="Apple-tab-span">	</span><b>findProxies</b></p>
+<p class="p6"><span class="Apple-tab-span">	</span><b>findProxies_(boolean)</b></p>
+<p class="p7"><span class="Apple-tab-span">	</span></p>
+<p class="p6"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>if set to true, the classes <a href="SC://Pdef"><span class="s11">Pdef</span></a>, <a href="SC://Pdefn"><span class="s11">Pdefn</span></a>, <a href="SC://Tdef"><span class="s11">Tdef</span></a>, <a href="SC://Ndef"><span class="s11">Ndef</span></a> and <a href="SC://Fdef"><span class="s11">Fdef</span></a> can be remote controlled<span class="Apple-converted-space"> </span></p>
+<p class="p6"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span>without explict publishing</p>
+<p class="p5"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></p>
+<p class="p5"><span class="Apple-tab-span">	</span></p>
+<p class="p5"><span class="Apple-tab-span">	</span></p>
+<p class="p11"><span class="s4"><span class="Apple-tab-span">	</span></span>// example:</p>
+<p class="p20"><span class="Apple-tab-span">	</span></p>
+<p class="p21"><span class="s4"><span class="Apple-tab-span">	</span></span>OpenObject<span class="s4">.start;</span></p>
+<p class="p11"><span class="s4"><span class="Apple-tab-span">	</span>n = </span><span class="s7">NetAddr</span><span class="s4">(</span><span class="s10">"127.0.0.1"</span><span class="s4">, </span><span class="s7">NetAddr</span><span class="s4">.langPort); </span>// loopback IP for this test</p>
+<p class="p5"><br></p>
+<p class="p12"><span class="Apple-tab-span">	</span><span class="s7">Pdef</span>(<span class="s8">\x</span>, <span class="s7">Pbind</span>(<span class="s8">\dur</span>, <span class="s7">Pseries</span>(0.2, 0.1, 6), <span class="s8">\note</span>, <span class="s7">Prand</span>([0, 2, 3, 4, 8, 9], <span class="s7">inf</span>)));</p>
+<p class="p12"><span class="Apple-tab-span">	</span>n.sendMsg(<span class="s10">"/oo"</span>, <span class="s8">\Pdef_x</span>, <span class="s8">\play</span>);</p>
+<p class="p5"><span class="Apple-tab-span">	</span></p>
+<p class="p12"><span class="Apple-tab-span">	</span><span class="s7">Ndef</span>(<span class="s8">\zz</span>, { <span class="s7">|freq=440, numharm = 200|</span> <span class="s7">Blip</span>.ar(freq * [1, 1.2], numharm) * 0.3 } );</p>
+<p class="p12"><span class="Apple-tab-span">	</span>n.sendMsg(<span class="s10">"/oo"</span>, <span class="s8">\Ndef_zz</span>, <span class="s8">\play</span>);</p>
+<p class="p12"><span class="Apple-tab-span">	</span>n.sendMsg(<span class="s10">"/oo"</span>, <span class="s8">\Ndef_zz</span>, <span class="s8">\fadeTime_</span>, 5);</p>
+<p class="p12"><span class="Apple-tab-span">	</span>n.sendMsg(<span class="s10">"/oo"</span>, <span class="s8">\Ndef_zz</span>, <span class="s8">\xset</span>, <span class="s8">\freq</span>, 174);<span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></p>
+<p class="p12"><span class="Apple-tab-span">	</span>n.sendMsg(<span class="s10">"/oo"</span>, <span class="s8">\Ndef_zz</span>, <span class="s8">\end</span>);</p>
+<p class="p5"><span class="Apple-tab-span">	</span></p>
+<p class="p5"><span class="Apple-tab-span">	</span></p>
+<p class="p5"><span class="Apple-tab-span">	</span></p>
+<p class="p10"><br></p>
+<p class="p10"><br></p>
+<p class="p13"><b>Interpreting</b></p>
+<p class="p5"><br></p>
+<p class="p6">For remote code execution, OpenObject can be opened to the interpreter.<span class="Apple-converted-space"> </span></p>
+<p class="p6"><b><span class="Apple-converted-space">    </span>Use with care!</b><span class="Apple-converted-space"> </span></p>
+<p class="p6"><span class="Apple-converted-space">    </span>(any code can be executed from the network).</p>
+<p class="p7"><br></p>
+<p class="p6"><b>openInterpreterFor(addr, cmd, selector)</b></p>
+<p class="p6"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><b>addr</b>: address from which the messages come</p>
+<p class="p6"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><b>cmd</b>: OSC command name</p>
+<p class="p6"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span><b>selector</b>: selector which is called on the object for the interpreted string</p>
+<p class="p7"><span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></p>
+<p class="p14">cmd name string</p>
+<p class="p7"><br></p>
+<p class="p7"><br></p>
+<p class="p11">// example</p>
+<p class="p16"><span class="s7">OpenObject</span>.openInterpreterFor(<span class="s7">nil</span>, <span class="s8">'/oosrc'</span>, <span class="s8">'source_'</span>);</p>
+<p class="p10"><br></p>
+<p class="p16"><span class="s7">Ndef</span>(<span class="s8">\y</span>, { <span class="s7">|freq=440, numharm = 200|</span> <span class="s7">Blip</span>.ar(freq * [1, 1.2], numharm) * 0.3 } );</p>
+<p class="p16"><span class="s7">Ndef</span>(<span class="s8">\y</span>).publish(<span class="s8">\brussels</span>);</p>
+<p class="p9">n.sendMsg(<span class="s10">"/oo"</span>, <span class="s8">\brussels</span>, <span class="s8">\play</span>);</p>
+<p class="p10"><br></p>
+<p class="p11">// set the source:</p>
+<p class="p22"><span class="s4">n.sendMsg(</span>"/oosrc"<span class="s4">, </span><span class="s8">\brussels</span><span class="s4">, </span>"{ |freq = 1000| Ringz.ar(Dust.ar(10.dup), freq, 0.07) }"<span class="s4">);</span></p>
+<p class="p10"><br></p>
+<p class="p11">// this is equivalent to:</p>
+<p class="p23"><span class="s7">Ndef</span><span class="s4">(</span><span class="s8">\y</span><span class="s4">).source_({</span> |freq = 1000| Ringz.ar(Dust.ar(10.dup), freq, 0.07) <span class="s4">});</span></p>
+<p class="p10"><br></p>
+<p class="p10"><br></p>
+</body>
+</html>
