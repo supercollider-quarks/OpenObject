@@ -3,7 +3,7 @@ OpenObject {
 
 	classvar <>objects;
 	classvar <responders;
-	classvar <>findProxies = true;
+	classvar <>findObjects = true;
 	
 	*initClass {
 		objects = ();
@@ -39,12 +39,13 @@ OpenObject {
 	
 	*findObject { |name|
 		var res = objects.at(name);
-		var class, key;
+		var lookup, key;
 		
 		^res ?? {
-			if(findProxies) {
-				#class ... key = name.asString.split($_);
-				class.asSymbol.asClass.at(key.join($_).asSymbol);
+			if(findObjects) {
+				#lookup ... key = name.asString.split($_);
+				lookup = objects.at(lookup.asSymbol);
+				lookup.at(key.join($_).asSymbol);
 			}
 		}
 	}
