@@ -7,38 +7,58 @@
 <meta name="Generator" content="Cocoa HTML Writer">
 <meta name="CocoaVersion" content="949.46">
 <style type="text/css">
-p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; color: #bf0000; min-height: 12.0px}
+p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; color: #000000; min-height: 12.0px}
 p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; color: #bf0000}
 p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; color: #000000}
-p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; color: #000000; min-height: 12.0px}
-p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; color: #0000bf}
-p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco}
+p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; color: #0000bf}
+p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.0px Monaco; color: #bf0000; min-height: 12.0px}
+p.p6 {margin: 0.0px 0.0px 0.0px 57.0px; text-indent: -57.0px; font: 9.0px Monaco; color: #000000; min-height: 12.0px}
+p.p7 {margin: 0.0px 0.0px 0.0px 57.0px; text-indent: -57.0px; font: 9.0px Monaco; color: #000000}
 span.s1 {color: #000000}
-span.s2 {color: #001bb9}
-span.s3 {color: #2c7014}
-span.s4 {color: #007300}
-span.s5 {color: #0000bf}
+span.s2 {color: #007300}
+span.s3 {color: #0000bf}
 span.Apple-tab-span {white-space:pre}
 </style>
 </head>
 <body>
 <p class="p1"><br></p>
 <p class="p2">// example for accessing the different systems (processing, pd, max)</p>
+<p class="p2">// see attached files</p>
+<p class="p1"><br></p>
 <p class="p3">(</p>
-<p class="p4"><br></p>
+<p class="p1"><br></p>
 <p class="p3">s.boot;</p>
-<p class="p5">OpenObject<span class="s1">.start;</span></p>
-<p class="p4"><br></p>
-<p class="p2">// use the following only in safe networks (the max patch allows for live coding)</p>
-<p class="p6"><span class="s2">OpenObject</span>.openInterpreterFor(<span class="s2">nil</span>, <span class="s3">'/oosrc'</span>, <span class="s3">'source_'</span>);</p>
-<p class="p4"><br></p>
-<p class="p4"><br></p>
-<p class="p5">Ndef<span class="s1">(</span><span class="s4">\y</span><span class="s1">, { </span>|freq=440, numharm = 200|<span class="s1"><span class="Apple-converted-space"> </span></span></p>
-<p class="p3"><span class="Apple-tab-span">	</span><span class="s5">Blip</span>.ar(freq * [1, 1.2], numharm) * 0.3<span class="Apple-converted-space"> </span></p>
+<p class="p4">OpenObject<span class="s1">.start;</span></p>
+<p class="p1"><br></p>
+<p class="p4">Ndef<span class="s1">(</span><span class="s2">\y</span><span class="s1">, { </span>|freq=440, numharm = 200|<span class="s1"><span class="Apple-converted-space"> </span></span></p>
+<p class="p3"><span class="Apple-tab-span">	</span><span class="s3">Blip</span>.ar(freq * [1, 1.2], numharm) * 0.3<span class="Apple-converted-space"> </span></p>
 <p class="p3">});</p>
-<p class="p4"><br></p>
-<p class="p2"><span class="s5">Ndef</span><span class="s1">(</span><span class="s4">\y</span><span class="s1">).publish(</span><span class="s4">\brussels</span><span class="s1">); </span>// accessible via \brussels</p>
-<p class="p4"><br></p>
+<p class="p1"><br></p>
+<p class="p2"><span class="s3">Ndef</span><span class="s1">(</span><span class="s2">\y</span><span class="s1">).publish(</span><span class="s2">\brussels</span><span class="s1">); </span>// accessible via \brussels</p>
+<p class="p1"><br></p>
 <p class="p3">)</p>
+<p class="p1"><br></p>
+<p class="p2">/*</p>
+<p class="p2">OSC messages may look like:</p>
+<p class="p5"><br></p>
+<p class="p2">"/oo", "brussels", "set", "freq", 300, "numharm", 34</p>
+<p class="p2">"/oo_k", "brussels", "play", "fadeTime", 4, "out", 1, "vol", 0.5</p>
+<p class="p5"><br></p>
+<p class="p5"><br></p>
+<p class="p2">*/</p>
+<p class="p1"><br></p>
+<p class="p1"><br></p>
+<p class="p1"><br></p>
+<p class="p2">// for using the live coding examples, open the interpreter (only in safe networks)</p>
+<p class="p6"><br></p>
+<p class="p7"><span class="s3">OpenObject</span>.openInterpreter;</p>
+<p class="p5"><br></p>
+<p class="p2">/*</p>
+<p class="p2">OSC messages may look like:</p>
+<p class="p5"><br></p>
+<p class="p2">"/oo_p", "brussels", "{ |freq| SinOsc.ar(freq) }"</p>
+<p class="p2">"/oo_i", "hello earth.postln"<span class="Apple-converted-space"> </span></p>
+<p class="p5"><br></p>
+<p class="p2">*/</p>
 </body>
 </html>
