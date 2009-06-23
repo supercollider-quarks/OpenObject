@@ -9,6 +9,7 @@ OpenObject {
 	classvar <>objects;
 	classvar <responders;
 	classvar <>lookup = false;
+	classvar <>replyPort;
 	
 	*initClass {
 		objects = ();
@@ -41,6 +42,7 @@ OpenObject {
 		
 		this.addResponder(addr, '/oo', { |msg| this.oscPerform(msg) });
 		this.addResponder(addr, '/oo_k', { |msg| this.oscPerformKeyValuePairs(msg) });
+		
 	}
 	
 	*end {
@@ -114,6 +116,7 @@ OpenObject {
 			if(lookup) {
 				#objectName ... key = name.asString.split($_);
 				object = objects.at(objectName.asSymbol);
+				if(object.isNil) { ^nil };
 				object.at(key.join($_).asSymbol);
 			}
 		}
@@ -178,6 +181,7 @@ OpenObject {
 	
 	*sendReply { |addr, id, args|
 		args = args.asOSCArgArray;
+		replyPort !? { addr.port = replyPort };
 		addr.sendMsg("/oo_reply", id, *args);
 	}
 	
