@@ -41,8 +41,6 @@ OpenObject {
 		
 		this.addResponder(addr, '/oo', { |msg| this.oscPerform(msg) });
 		this.addResponder(addr, '/oo_k', { |msg| this.oscPerformKeyValuePairs(msg) });
-		this.addResponderWithReply(addr, '/oor', { |msg| this.oscPerform(msg) });
-		this.addResponderWithReply(addr, '/oor_k', { |msg| this.oscPerformKeyValuePairs(msg) });
 	}
 	
 	*end {
@@ -70,7 +68,6 @@ OpenObject {
 			"\nuse 'closeInterpreter' to close interpreter. *").postln;
 			this.addResponder(addr, '/oo_p', { |msg| this.setProxySource(msg) });
 			this.addResponder(addr, '/oo_i', { |msg| this.interpretOSC(msg) });
-			this.addResponderWithReply(addr, '/oor_i', { |msg| this.interpretOSC(msg) });
 	}
 	
 	// safe again.
@@ -86,18 +83,17 @@ OpenObject {
 	
 	*addResponder { |addr, cmd, func|
 		responders = responders.add(
-			OSCresponderNode(addr, cmd, { |t, r, msg|
-				func.value(msg[1..])
-			}).add;
-		);
-	}
-	
-	*addResponderWithReply { |addr, cmd, func|
-		responders = responders.add(
-			OSCresponderNode(addr, cmd, { |t, r, msg, addr|
-				var res = func.value(msg[2..]);
-				var id = msg[1];
-				this.sendReply(addr, id, res);
+			OSCresponderNode(addr, cmd, { |t, r, msg, replyAddr|
+				// some type matching
+				if(msg[1].isNumber) {
+					// replyID name selector args ...
+					var res = func.value(msg[2..]);
+					var id = msg[1];
+					this.sendReply(replyAddr, id, res);
+				} {
+					// name selector args ...
+					func.value(msg[1..])
+				}
 			}).add;
 		);
 	}
@@ -163,12 +159,13 @@ OpenObject {
 				string.postcs;
 				
 				if(receiver.isNil) { 
-					"OpenObject: name: % not found".format(name).warn 
+					"OpenObject: name: % not found".format(name).warn;
 				} {
 					object = string.asString.interpret;
 					object !? { receiver.source_(object) };
 				}
-			}
+			};
+			^nil
 	}
 	
 	// evaluate an array of strings and return the results
