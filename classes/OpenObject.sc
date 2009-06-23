@@ -174,7 +174,7 @@ OpenObject {
 	// evaluate an array of strings and return the results
 	
 	*interpretOSC { |msg|
-			^msg.collect { |string| value(interpret(asString(string))) };
+			^msg.join.interpret
 	}
 	
 	// send an array of values back to a sender
