@@ -8,11 +8,11 @@
 		var stack, current, prev;
 		
 		this.do { |item|
-			if(item === '[' /*]*/) {
+			if(item === $[ /*]*/) {
 				current !? { stack = stack.add(current) };
 				current = nil;
 			} {
-				if(item === /*[*/ ']') {
+				if(item === /*[*/ $]) {
 					prev = stack.pop;
 					prev = prev.add(current);
 					current = prev;
