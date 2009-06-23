@@ -152,11 +152,11 @@ OpenObject {
 			}
 	}
 	
-	// name1, sourceCode1, name2, sourceCode2  ...
+	// name, sourceCode
 	
 	*setProxySource { |msg|
 			
-			msg.pairsDo { |name, string|
+			/*msg.pairsDo { |name, string|
 				var object, receiver;
 				receiver = this.getObject(name);
 				string.postcs;
@@ -167,8 +167,23 @@ OpenObject {
 					object = string.asString.interpret;
 					object !? { receiver.source_(object) };
 				}
-			};
-			^nil
+			};*/
+			
+			// for now, support only single sets
+			
+			var name = msg[0], string = msg[1..].join;
+			var object, receiver, ok = 0;
+			receiver = this.getObject(name);
+			string.postcs;
+			
+			if(receiver.isNil) { 
+				"OpenObject: name: % not found".format(name).warn;
+			} {
+				object = string.interpret;
+				object !? { receiver.source_(object); ok = 1; };
+			}
+
+			^ok
 	}
 	
 	// evaluate an array of strings and return the results
