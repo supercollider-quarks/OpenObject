@@ -86,11 +86,12 @@ OpenObject {
 	*addResponder { |addr, cmd, func|
 		responders = responders.add(
 			OSCresponderNode(addr, cmd, { |t, r, msg, replyAddr|
+				var res, id;
 				// some type matching
 				if(msg[1].isNumber) {
 					// replyID name selector args ...
-					var res = func.value(msg[2..]);
-					var id = msg[1];
+					res = func.value(msg[2..]);
+					id = msg[1];
 					this.sendReply(replyAddr, id, res);
 				} {
 					// name selector args ...
