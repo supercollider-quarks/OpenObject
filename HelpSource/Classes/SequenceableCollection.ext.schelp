@@ -1,0 +1,15 @@
+instancemethods::
+
+subsection:: Extensions by OpenObject
+
+method:: unfoldOSCArrays
+
+When receiving arrays in an OSC message that have been converted with ::#-asOSCArgArray::, according to the OSC standard using $[ and $] characters, this converts them back.
+
+method::foldOSC
+
+Prepare a nested array for sending via OSC
+
+method::unfoldOSC
+
+Unpack a nested array for sending via OSC
