@@ -3,10 +3,10 @@
 // counterpart to asOSCArgBundle, asOSCArgArray
 
 + SequenceableCollection {
-		
+
 	unfoldOSCArrays {
 		var stack, current, prev;
-		
+
 		this.do { |item|
 			if(item === $[ /*]*/) {
 				current !? { stack = stack.add(current) };
@@ -21,16 +21,26 @@
 				}
 			}
 		};
-		
+
 		// empty stack, embed unclosed brackets
 		stack.reverseDo { |prev|
 				prev = prev.add(current);
 				current = prev;
 		};
-		
+
 		^current
 
 	}
-	
+
+	// for convenience and clarity.
+
+	foldOSC {
+		^this.asOSCArgArray
+	}
+
+	unfoldOSC {
+		^this.unfoldOSCArrays
+	}
+
 }
 
