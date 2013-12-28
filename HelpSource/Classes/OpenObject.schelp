@@ -14,6 +14,13 @@ list::
 
 There is only one instance for each instance of sc-lang. Any functionality within sclang can be remote controlled, for instance by using environments with functions (example below).
 
+NOTE::
+There are examples for Processing, Max/MSP and PureData bundled with this Quark. You'll find them next to where you installed this class.
+CODE::
+OpenObject.filenameSymbol	//post the installation filepath of this class
+::
+::
+
 CLASSMETHODS::
 
 PRIVATE:: initClass, addResponder, removeResponder, getObject, oscPerform, oscPerformKeyValuePairs, setProxySource, interpretOSC, sendReply
@@ -56,7 +63,7 @@ The key under which object is published.
 
 code::
 a = [1, 2, 3];
-OpenObject.put(\sans, a);		
+OpenObject.put(\sans, a);
 OpenObject.keyFor(a);
 ::
 
@@ -95,7 +102,7 @@ n.sendMsg("/oo", \Pdef_xx, \play);
 Ndef(\zz, { |freq=20, numharm = 200| Blip.ar(freq * [1, 1.2], numharm) * 0.3 } );
 n.sendMsg("/oo", \Ndef_zz, \play);
 n.sendMsg("/oo", \Ndef_zz, \fadeTime_, 2);
-n.sendMsg("/oo", \Ndef_zz, \xset, \freq, rrand(17, 80), \numharm, rrand(3, 100));		
+n.sendMsg("/oo", \Ndef_zz, \xset, \freq, rrand(17, 80), \numharm, rrand(3, 100));
 n.sendMsg("/oo", \Ndef_zz, \end);
 
 p = ProxySpace.push(s);
@@ -201,7 +208,7 @@ code::
 OpenObject.start;
 n = NetAddr("127.0.0.1", 57120); // loopback IP for this test
 // for replies (normally on the remote system):
-r = OSCresponder(nil, "/oo_reply", {|t,r,msg| msg.postln }).add; 
+r = OSCresponder(nil, "/oo_reply", {|t,r,msg| msg.postln }).add;
 
 
 a = [1, 2, 3, 3, 4]; // an object ...
@@ -250,8 +257,8 @@ currentEnvironment.unpublish;
 q = ();
 q.publish(\madrid);
 q.openWindow = { |q|
-	defer { 
-	try { q.window.close }; 
+	defer {
+	try { q.window.close };
 	q.window = Window("remote", Rect(800, 300, 400, 250));
 	q.slider = Slider(q.window.view, Rect(50, 30, 300, 30));
 	q.window.front;
