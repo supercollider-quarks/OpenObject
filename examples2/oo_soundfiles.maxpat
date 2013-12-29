@@ -693,6 +693,8 @@
 					"numinlets" : 2,
 					"patching_rect" : [ 195.0, 315.0, 140.0, 21.0 ],
 					"numoutlets" : 2,
+					"size" : 255.0,
+					"min" : -127,
 					"presentation" : 1,
 					"id" : "obj-78",
 					"outlettype" : [ "", "" ]
