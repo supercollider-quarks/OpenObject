@@ -18,7 +18,7 @@ s.waitForBoot{
 		var pos= LFDNoise1.kr(posRate).range(posMin, posMax);
 		var pan= LFDNoise1.kr(panRate).range(panMin, panMax);
 		var pch= LFDNoise1.kr(pchRate).range(pchMin, pchMax);
-		var trg= Impulse.kr(1/LFDNoise1.kr(trgRate).exprange(trgMin.max(0.001), trgMax));
+		var trg= Impulse.kr(1/LFDNoise1.kr(trgRate).exprange(trgMin.max(0.001), trgMax.max(0.001)));
 		var dur= LFDNoise1.kr(durRate).exprange(durMin.max(0.001), durMax);
 		var snd= GrainBuf.ar(1, trg, dur, buf, pch, pos, 4);
 		Out.ar(out, Pan2.ar(snd, pan, env*vol.dbamp));
