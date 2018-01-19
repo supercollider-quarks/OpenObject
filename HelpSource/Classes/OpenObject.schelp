@@ -4,7 +4,9 @@ CATEGORIES:: OpenSoundControl
 RELATED:: Classes/OSCFunc, Classes/NetAddr
 
 DESCRIPTION::
-Publish any object for remote access via network (OSC, see http://opensoundcontrol.org/). This allows to create easy access for other languages and systems, such as Pd, Processing or Max.
+Publish any object for remote access via network (OSC, see http://opensoundcontrol.org ). This allows to create easy access for other languages and systems, such as Pd, Processing or Max.
+
+For more examples and demos see http://www.fredrikolofsson.com/f0blog/?q=node/401
 
 OpenObject API has two levels:
 list::
