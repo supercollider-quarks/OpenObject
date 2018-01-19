@@ -25,7 +25,7 @@ OpenObject.filenameSymbol	//post the installation filepath of this class
 
 CLASSMETHODS::
 
-PRIVATE:: initClass, addResponder, removeResponder, getObject, oscPerform, oscPerformKeyValuePairs, setProxySource, interpretOSC, sendReply
+PRIVATE:: initClass, addResponder, removeResponder, getObject, oscPerform, oscPerformKeyValuePairs, setProxySource, interpretOSC, sendReply, prAvoidTheWorst
 
 METHOD:: start
 Start listening to addr (if code::nil::, it listens to all addresses). SClang strong::listens on the port 57120::. If for some reason it was given a different one by the OS, an error message is posted. Restarting SuperCollider helps.
@@ -175,6 +175,19 @@ code::
 "/oo_i" string
 "/oo_i" replyID string
 "/oo_p" name string
+::
+
+METHOD::avoidTheWorst
+A link::Classes/Boolean:: to de/activate a layer of extra protection. By default this is true and will block strings that contain code::unixCmd::, code::systemCmd::, code::Pipe:: and code::File::. To turn off the protection set this to false.
+
+code::
+OpenObject.start;
+OpenObject.openInterpreter;
+n = NetAddr("127.0.0.1", 57120);
+n.sendMsg("/oo_i", "\"ls\".unixCmd;");  //by default unixCmd, Pipe, File etc. are blocked
+OpenObject.avoidTheWorst= false;
+n.sendMsg("/oo_i", "\"ls\".unixCmd;");  //but now anything can happen
+OpenObject.closeInterpreter;
 ::
 
 METHOD::closeInterpreter

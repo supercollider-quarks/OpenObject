@@ -10,6 +10,7 @@ OpenObject {
 	classvar <responders;
 	classvar <>lookup = false;
 	classvar <>replyPort;
+	classvar <>avoidTheWorst = true;
 
 	*initClass {
 		objects = ();
@@ -190,7 +191,7 @@ OpenObject {
 	// evaluate an array of strings and return the results
 
 	*interpretOSC { |msg|
-		if(this.avoidTheWorst(msg) ){
+		if(this.prAvoidTheWorst(msg) ){
 			msg = msg.join;
 			^try {
 				msg.interpret
@@ -204,14 +205,18 @@ OpenObject {
 	}
 
 
-	*avoidTheWorst { arg obj;
+	*prAvoidTheWorst { arg obj;
 		var str;
-		str = obj.asString;
-		^str.find("unixCmd").isNil
-		and: { str.find("systemCmd").isNil }
-		and: { str.find("File").isNil }
-		and: { str.find("Pipe").isNil }
-		and: { str.find("Public").isNil }
+		if(avoidTheWorst) {
+			str = obj.asString;
+			^str.find("unixCmd").isNil
+			and: { str.find("systemCmd").isNil }
+			and: { str.find("File").isNil }
+			and: { str.find("Pipe").isNil }
+			and: { str.find("Public").isNil }
+		} {
+			^true;
+		}
 	}
 
 	// send an array of values back to a sender
