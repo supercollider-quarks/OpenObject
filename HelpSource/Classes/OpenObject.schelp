@@ -1,7 +1,7 @@
 CLASS:: OpenObject
 SUMMARY:: talk to objects over the network
 CATEGORIES:: OpenSoundControl
-RELATED:: Classes/OSCresponder, Classes/NetAddr
+RELATED:: Classes/OSCFunc, Classes/NetAddr
 
 DESCRIPTION::
 Publish any object for remote access via network (OSC, see http://opensoundcontrol.org/). This allows to create easy access for other languages and systems, such as Pd, Processing or Max.
@@ -54,7 +54,7 @@ code::
 a = [1, 2, 3];
 OpenObject.put(\foo, a);
 
-// alternatively, any object may be made accessable directly:
+// alternatively, any object may be made accessible directly:
 a.publish(\foo);
 ::
 
@@ -73,7 +73,7 @@ Remove an object.
 code::
 OpenObject.remove(a);
 
-// alternatively, any object may be made unaccessable again directly:
+// alternatively, any object may be made inaccessible again directly:
 a.unpublish;
 ::
 
@@ -137,7 +137,7 @@ n.sendMsg("/oo_i", "a = { Dust.ar(1000 ! 2, 0.1) }.play;");
 n.sendMsg("/oo_i", "a.free;");
 
 // sending back a reply (emulating the remote call)
-r = OSCresponder(nil, "/oo_reply", {|t,r,msg| msg.postln }).add;
+r = OSCFunc({|msg| msg.postln }, "/oo_reply");
 n.sendMsg("/oo_i", 99, "[7 + 14, pi / 2]"); // provide a replyID: 99
 
 // oo_p
@@ -158,6 +158,7 @@ n.sendMsg("/oo", \Ndef_out, \clear, 3);
 
 OpenObject.closeInterpreter;
 OpenObject.clear.end;
+r.free;
 ::
 
 METHOD::openInterpreter
@@ -208,7 +209,7 @@ code::
 OpenObject.start;
 n = NetAddr("127.0.0.1", 57120); // loopback IP for this test
 // for replies (normally on the remote system):
-r = OSCresponder(nil, "/oo_reply", {|t,r,msg| msg.postln }).add;
+r = OSCFunc({|msg| msg.postln }, "/oo_reply");
 
 
 a = [1, 2, 3, 3, 4]; // an object ...
@@ -216,10 +217,9 @@ a.publish(\paris); // accessible via \paris
 
 n.sendMsg("/oo", \paris, \put, 2, 1974); // equivalent of a.put(2, 1974)
 a.postln;
-n.sendMsg("/oo", 1, \paris, \at, 2); // equivalent of a.put(2, 1974)
+n.sendMsg("/oo", 99, \paris, \at, 2); // equivalent of a.at(2) with replyID 99
 a.postln;
-
-n.sendMsg("/oo", \paris, \put, 2, "hello paris"); // equivalent of a.put(2, 1974)
+n.sendMsg("/oo", \paris, \put, 2, "hello paris"); // equivalent of a.put(2, "hello paris")
 a.postln;
 
 // arrays:
@@ -229,6 +229,8 @@ n.sendMsg("/oo", \paris, \put, $[, 2, 3, $], 500); // a.put([2, 3], 500)
 a.postln;
 n.sendMsg("/oo", \paris, \put, 0, $[, 2, $[, 3, 4, $], $]); // a.put(0, [ 2, [ 3, 4 ] ])
 a.postln;
+r.free;
+
 
 // sound example
 
@@ -243,6 +245,8 @@ n.sendMsg("/oo", \brussels, \stop);
 n.sendMsg("/oo_k", \brussels, \play, \fadeTime, 3);
 // setting args
 n.sendMsg("/oo", \brussels, \xset, \freq, 30, \numharm, 200);
+n.sendMsg("/oo", \brussels, \set, \fadeTime, 1.5);
+n.sendMsg("/oo", \brussels, \xset, \freq, 130, \numharm, 20);
 n.sendMsg("/oo", \brussels, \stop);
 
 
