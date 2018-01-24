@@ -1,4 +1,4 @@
-//first start supercollider and run the code in 'openobject_supercollider.html'
+//first start supercollider and run the code in 'openobject_supercollider.scd'
 
 //requires the opensound control library by andreas schlegel
 //oscP5 website at http://www.sojamo.de/oscP5

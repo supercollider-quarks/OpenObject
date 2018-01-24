@@ -10,6 +10,7 @@ OpenObject {
 	classvar <responders;
 	classvar <>lookup = false;
 	classvar <>replyPort;
+	classvar <>avoidTheWorst = true;
 
 	*initClass {
 		objects = ();
@@ -46,7 +47,7 @@ OpenObject {
 	}
 
 	*end {
-		responders.do(_.remove);
+		responders.do(_.free);
 		responders = nil;
 	}
 
@@ -85,7 +86,7 @@ OpenObject {
 
 	*addResponder { |addr, cmd, func|
 		responders = responders.add(
-			OSCresponderNode(addr, cmd, { |t, r, msg, replyAddr|
+			OSCFunc({ |msg, time, replyAddr, recvPort|
 				var res, id;
 				// some type matching
 				if(msg[1].isNumber) {
@@ -97,14 +98,14 @@ OpenObject {
 					// name selector args ...
 					func.value(msg[1..])
 				}
-			}).add;
+			}, cmd, addr).fix;
 		);
 	}
 
 	*removeResponder { |cmd|
-		var all = responders.select { |resp| resp.cmdName == cmd };
+		var all = responders.select { |resp| resp.path == cmd };
 		all.do { |resp|
-			resp.remove;
+			resp.free;
 			responders.remove(resp);
 		}
 	}
@@ -190,7 +191,32 @@ OpenObject {
 	// evaluate an array of strings and return the results
 
 	*interpretOSC { |msg|
-			^msg.join.interpret
+		if(this.prAvoidTheWorst(msg) ){
+			msg = msg.join;
+			^try {
+				msg.interpret
+			} {
+				"\n // % - could not interpret: \n%\n\n".postf(this, msg.cs);
+				nil;
+			};
+		}{
+			"Sorry! unixCmds, pipes are not allowed!".warn
+		}
+	}
+
+
+	*prAvoidTheWorst { arg obj;
+		var str;
+		if(avoidTheWorst) {
+			str = obj.asString;
+			^str.find("unixCmd").isNil
+			and: { str.find("systemCmd").isNil }
+			and: { str.find("File").isNil }
+			and: { str.find("Pipe").isNil }
+			and: { str.find("Public").isNil }
+		} {
+			^true;
+		}
 	}
 
 	// send an array of values back to a sender
